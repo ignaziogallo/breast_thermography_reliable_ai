@@ -1,0 +1,35 @@
+# O1 -- where in the image is the acquisition era written?
+#
+# Runs on the host that holds data/DMR-IR. This workstation does not: only the second
+# cohort's images are here, which is why the extraction cannot be done where the paper is
+# written.
+#
+# No GPU and no network are needed -- the whole analysis is percentile statistics and
+# histograms over 236 static frontal frames and their distributed masks, then a logistic
+# probe. Expect minutes on CPU. Run it on the A100 host anyway, because that is where the
+# pixels are.
+#
+# Step 1, on the host: read the pixels, write results/dmr_signature_features.csv.
+#   The script prints the observed pixel range and warns if it does not look like degrees
+#   Celsius. Read that line before trusting the histogram row: the histogram bins are fixed
+#   at 25-40 degC on purpose, so that a bin means the same temperature in every image, and
+#   if the mirror stores something else the bins must be corrected rather than the warning
+#   ignored.
+#
+# Step 2 can run anywhere once the feature table is copied back; it is listed here so the
+# whole thing can be done in one session on the host.
+#
+# What the four rows will mean, decided before seeing them:
+#   background >> roi   the era signature is in the room, camera or framing: physically
+#                       non-pathological, and the confounding reading is the only one left;
+#   roi >= background   era and pathology are written in the same pixels: consistent with
+#                       the paper, and it sharpens the identifiability section rather than
+#                       weakening it -- no reweighting of the manuscript's claims either way;
+#   global/histogram high  the shortcut needs no spatial structure: any globally pooled
+#                       feature carries it, which is the cheapest possible explanation of
+#                       why every backbone decodes the era equally well.
+# All four are publishable; none of them changes the central claim, which is why this is
+# an optional experiment and not a blocker.
+
+python scripts/39_signature_source.py --extract --data-root data/DMR-IR > logs/f3_o1_extract.log 2>&1
+python scripts/39_signature_source.py > logs/f3_o1_probe.log 2>&1

@@ -1,0 +1,27 @@
+{
+  "experiment": "experiment_08_multimodal",
+  "research_question": "does the image score add information given age",
+  "covariate": "age",
+  "n_patients_scored": 119,
+  "n_patients_dropped_absent_from_manifest": 0,
+  "patients_dropped": "0 patient(s); identifiers not distributed",
+  "image_model": "convnext_tiny_breast_level",
+  "image_predictions": "results/experiment_09_breast_level/predictions.csv",
+  "primary_variant": "age_plus_image_fixed (no label fitting; leakage-free)",
+  "exploratory_variant": "age_plus_image_stacked_exploratory (meta-model fitted on training patients whose image scores depend on the test fold)",
+  "caveat": "a multimodal model containing age beats age-alone by construction; the quantity of interest is the paired difference against age_only_reference",
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "manifest_rows": 119,
+    "manifest_unique_patients": 119,
+    "label_counts": {
+      "0": 84,
+      "1": 35
+    },
+    "splits_path": "results/patient_splits.csv",
+    "splits_sha256": "a80b7b0573c496d7c0cd3530899eeaef1357251c3eafef5f855a1b8fc531972b"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

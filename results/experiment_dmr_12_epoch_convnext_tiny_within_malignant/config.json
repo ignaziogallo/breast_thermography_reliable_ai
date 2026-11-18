@@ -1,0 +1,46 @@
+{
+  "experiment": "experiment_dmr_12_epoch_convnext_tiny_within_malignant",
+  "arm": "within_malignant",
+  "research_question": "can the thermogram identify its acquisition era among patients sharing a diagnosis",
+  "target": "1 = later acquisition era; the diagnosis is held constant within an arm",
+  "diagnosis_held_constant": 1,
+  "early_years": [
+    2013,
+    2014,
+    2015
+  ],
+  "late_years": [
+    2018,
+    2019,
+    2020
+  ],
+  "n_patients": 94,
+  "n_early": 39,
+  "n_late": 55,
+  "n_patients_dropped_absent_from_manifest": 2,
+  "patients_dropped": "2 patient(s); identifiers not distributed",
+  "interpretation": "above chance within_benign shows the encoder reads acquisition era from pixels, so the malignancy result is confounded; at chance it is evidence against a generic batch artifact. within_malignant is NOT attributable: no benign patient was acquired after 2015, so a protocol change and a change of case mix cannot be separated",
+  "encoder": "convnext_tiny",
+  "freeze_backbone": true,
+  "protocol": "Static",
+  "views": [
+    "frontal"
+  ],
+  "normalisation": "per_image",
+  "epochs": 30,
+  "trainable_parameters": 769,
+  "inputs": {
+    "manifest_path": "results/experiment_dmr_12_epoch_convnext_tiny_within_malignant/manifest.csv",
+    "manifest_sha256": "07ca169c05b6ba4819d5cdc7b0e558d79085c4d77a1ae63f3eded6719c2bb76f",
+    "manifest_rows": 94,
+    "manifest_unique_patients": 94,
+    "label_counts": {
+      "1": 55,
+      "0": 39
+    },
+    "splits_path": "results/experiment_dmr_12_epoch_convnext_tiny_within_malignant/splits.csv",
+    "splits_sha256": "f66dd6b43436f14be3a9049ea76d4b17d461fab2296399d0e6221a495af506f0"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

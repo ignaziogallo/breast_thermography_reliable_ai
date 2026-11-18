@@ -1,0 +1,2 @@
+run,reference,era_auroc,n_patients,delta,delta_lo,delta_hi,bootstrap_p
+experiment_dmr_15_features_convnext_finetune,experiment_dmr_15_features_convnext_frozen,0.9451992753623188,133,-0.008152173913043459,-0.026957685219890077,0.007290899966544013,0.369

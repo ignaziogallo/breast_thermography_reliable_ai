@@ -1,0 +1,38 @@
+_base_: base.yaml
+experiment: experiment_02_single_view
+view: anterior
+
+# One encoder, fixed in advance. With 35 events a patient-level bootstrap interval on
+# AUROC spans roughly +/-0.10, so comparing architectures would rank fold noise and
+# reporting the best of several would bias the estimate through selection.
+encoder: convnext_tiny
+pretrained: true
+
+image_size: 224
+batch_size: 16
+epochs: 60
+patience: 8
+learning_rate: 0.0001
+weight_decay: 0.0001
+optimiser: adamw
+scheduler: cosine
+mixed_precision: true
+
+# Applied after splitting, to training patients only.
+augmentation:
+  random_affine_degrees: 10
+  random_affine_translate: 0.05
+  random_affine_scale: [0.9, 1.1]
+  # Mirroring exchanges the left and right breast; disease is unilateral in every patient
+  # and the view naming encodes anatomical side. A flip would assert that laterality
+  # carries no information, which is a hypothesis rather than a regularisation.
+  horizontal_flip: false
+  # Each image is standardised individually, so absolute intensity has no meaning to jitter.
+  photometric_jitter: false
+
+# The exports are per-image auto-ranged, so ImageNet channel statistics do not apply.
+normalisation: per_image_zscore
+
+reference_baselines:
+  age_only_auroc: 0.758
+  asymmetry_auroc: 0.631

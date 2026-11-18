@@ -1,0 +1,4 @@
+_base_: base.yaml
+experiment: experiment_07_metadata
+features: [age, bmi, temperature]
+models: [logistic_regression, random_forest]

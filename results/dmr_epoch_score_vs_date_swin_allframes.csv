@@ -1,0 +1,6 @@
+stratum,n,spearman_score_date,p_value
+all,236,0.7228,2.024908988303576e-39
+benign,140,0.1061,0.21194881783630698
+malignant,96,0.6004,1.0101779590700108e-10
+within_benign_auroc_of_malignancy_score,136,0.5926,
+within_malignant_auroc_of_malignancy_score,96,0.8534,

@@ -1,0 +1,2 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+convnext_tiny_finetune_fixed_budget,0.6151,0.0702,0.5907,0.029,0.5314,0.1255,0.65,0.1452,0.4138,0.1052,0.5314,0.1255,0.4461,0.0318,0.6387,0.0407,0.4554,0.0539,0.2378,0.0127,0.1993,0.0144,0.5815,0.0343

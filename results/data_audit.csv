@@ -1,0 +1,2 @@
+n_manifest_rows,n_patients_in_folders,n_patients_in_diagnostics,n_images_found,patients_with_all_3_views,patients_missing_views,folder_diagnostics_inconsistencies,patient_label_counts,left_label_counts,right_label_counts,exact_duplicate_image_rows,exact_duplicate_hash_groups,near_duplicate_candidate_pairs
+119,119,119,357,119,0,0,"{""0"": 84, ""1"": 35}","{""N"": 52, ""PB"": 50, ""PM"": 17}","{""N"": 65, ""PB"": 36, ""PM"": 18}",0,0,2

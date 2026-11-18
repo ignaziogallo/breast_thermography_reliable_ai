@@ -1,0 +1,47 @@
+{
+  "experiment": "experiment_dmr_14_matched_allframes_swin_overlap",
+  "research_question": "how much of a reported DMR-IR score is produced by the split unit",
+  "arms": [
+    "patient_level"
+  ],
+  "protocol": "all",
+  "views": [
+    "frontal",
+    "oblique45_a",
+    "oblique90_a",
+    "oblique45_b",
+    "oblique90_b"
+  ],
+  "encoder": "swin_tiny_patch4_window7_224",
+  "trainable_parameters": 769,
+  "freeze_backbone": true,
+  "epochs": 15,
+  "normalisation": "per_image",
+  "augmentation": {
+    "random_affine_degrees": 10.0,
+    "random_affine_translate": 0.05,
+    "random_affine_scale": [
+      0.9,
+      1.1
+    ],
+    "horizontal_flip": false,
+    "horizontal_flip_rationale": "mirroring exchanges left and right breast; disease is unilateral",
+    "photometric_jitter": false,
+    "photometric_jitter_rationale": "images are standardised individually; absolute intensity is not meaningful"
+  },
+  "leaky_arm_note": "image_level predictions are written to predictions_image_level_LEAKY.csv; they violate patient-level holdout by design and must never be reported as a clean estimate",
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "manifest_rows": 236,
+    "manifest_unique_patients": 236,
+    "label_counts": {
+      "0": 140,
+      "1": 96
+    },
+    "splits_path": "results/matching/dmr/overlap/splits.csv",
+    "splits_sha256": "87cde58a63e7d096771fc60a8582ea37a80523f2d9a7ab1699e8043c32b4a825"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

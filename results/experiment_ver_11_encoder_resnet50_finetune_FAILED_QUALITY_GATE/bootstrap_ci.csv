@@ -1,0 +1,10 @@
+model,metric,estimate,ci_lower,ci_upper,n_bootstrap_valid
+resnet50_finetune_discriminative_lr,accuracy,0.6890756302521008,0.5966386554621849,0.773109243697479,2000
+resnet50_finetune_discriminative_lr,balanced_accuracy,0.513095238095238,0.4625,0.5676678813842215,2000
+resnet50_finetune_discriminative_lr,sensitivity,0.08571428571428572,0.0,0.18518518518518517,2000
+resnet50_finetune_discriminative_lr,specificity,0.9404761904761905,0.8795081424599497,0.9879518072289156,2000
+resnet50_finetune_discriminative_lr,precision,0.375,0.0,0.75,2000
+resnet50_finetune_discriminative_lr,recall,0.08571428571428572,0.0,0.18518518518518517,2000
+resnet50_finetune_discriminative_lr,f1,0.13953488372093023,0.0,0.2778100775193797,2000
+resnet50_finetune_discriminative_lr,roc_auc,0.5809523809523809,0.4615285923753666,0.6930978628237764,2000
+resnet50_finetune_discriminative_lr,pr_auc,0.3578577576873584,0.24886056491727718,0.5158859773985892,2000

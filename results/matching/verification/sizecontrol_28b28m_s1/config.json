@@ -1,0 +1,26 @@
+{
+  "cohort": "sizecontrol_28b28m_s1",
+  "note": "random subset of 28+28 patients, confounding intact; the size control for age_matched_2, propensity_with_age",
+  "dataset": "verification",
+  "confounder": "age",
+  "confounder_units": "age at visit (years)",
+  "covariates_reported": [
+    "age",
+    "bmi",
+    "temperature"
+  ],
+  "selection_inputs": "metadata and the diagnostic label only; no model score of any kind enters cohort construction",
+  "counts": {
+    "n_patients": 56,
+    "n_benign": 28,
+    "n_malignant": 28
+  },
+  "confounder_auroc_after_control": 0.7774,
+  "max_abs_smd": 1.0432,
+  "evaluable": true,
+  "folds": 5,
+  "repeats": 5,
+  "seed": 42,
+  "source_manifest": "results/patient_manifest.csv",
+  "source_manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253"
+}

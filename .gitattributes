@@ -1,0 +1,12 @@
+# One line ending on every platform. Each run records the SHA-256 of the manifest and split
+# file it consumed, so a checkout that rewrote those files with CRLF would hash differently
+# from the host that produced the results, and a run could not be matched to its inputs.
+* text=auto eol=lf
+
+# Generated result artifacts are tracked for reproducibility, but they must never be
+# line-merged: git would interleave two audit runs into one file and insert conflict
+# markers, producing a manifest that still parses as CSV and silently corrupts the cohort.
+# With `-merge`, git reports the conflict and leaves the working-tree version intact;
+# the correct resolution is always to regenerate, never to edit by hand.
+results/*.csv -merge
+paper/generated/*.tex -merge

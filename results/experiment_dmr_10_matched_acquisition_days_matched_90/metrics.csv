@@ -1,0 +1,2 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+convnext_tiny_linear_probe,0.496,0.1152,0.4949,0.1166,0.5231,0.1003,0.4667,0.1624,0.5205,0.111,0.5231,0.1003,0.5201,0.0998,0.5167,0.0807,0.5526,0.0594,0.261,0.0147,0.1835,0.0545,0.528,0.0522

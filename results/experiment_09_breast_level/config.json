@@ -1,0 +1,56 @@
+{
+  "experiment": "experiment_09_breast_level",
+  "research_question": "does an oblique-view model discriminate the diseased breast from its contralateral counterpart within the same patient",
+  "encoder": "convnext_tiny",
+  "arm": "finetune_discriminative_lr",
+  "trainable_parameters": 27820897,
+  "n_breast_samples": 238,
+  "breast_class_counts": {
+    "N": 117,
+    "PB": 86,
+    "PM": 35
+  },
+  "quality_gate": {
+    "collapsed_folds": 0,
+    "total_folds": 25,
+    "threshold": 0.05,
+    "max_allowed": 5,
+    "passed": true
+  },
+  "epochs": 30,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "backbone_lr_scale": 0.01,
+  "warmup_epochs": 3,
+  "augmentation": {
+    "random_affine_degrees": 10.0,
+    "random_affine_translate": 0.05,
+    "random_affine_scale": [
+      0.9,
+      1.1
+    ],
+    "horizontal_flip": false,
+    "horizontal_flip_rationale": "mirroring exchanges left and right breast; disease is unilateral",
+    "photometric_jitter": false,
+    "photometric_jitter_rationale": "images are standardised individually; absolute intensity is not meaningful"
+  },
+  "model_selection": "none: fixed epoch budget, the final model is scored",
+  "threshold_rule": "balanced accuracy maximized on validation breasts of each fold",
+  "patient_aggregation": "max over the two breasts",
+  "within_patient_test": "sign test on the ordering of the two breasts of one patient; immune to any patient-level covariate, including age",
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "manifest_rows": 119,
+    "manifest_unique_patients": 119,
+    "label_counts": {
+      "0": 84,
+      "1": 35
+    },
+    "splits_path": "results/patient_splits.csv",
+    "splits_sha256": "a80b7b0573c496d7c0cd3530899eeaef1357251c3eafef5f855a1b8fc531972b"
+  },
+  "device": "cuda",
+  "seed": 42,
+  "runtime_seconds": 778.8
+}

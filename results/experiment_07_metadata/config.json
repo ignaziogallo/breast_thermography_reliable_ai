@@ -1,0 +1,41 @@
+{
+  "experiment": "experiment_07_metadata",
+  "models": [
+    "gradient_boosting_metadata",
+    "logistic_age_only",
+    "logistic_metadata"
+  ],
+  "features": {
+    "gradient_boosting_metadata": [
+      "age",
+      "bmi",
+      "temperature"
+    ],
+    "logistic_age_only": [
+      "age"
+    ],
+    "logistic_metadata": [
+      "age",
+      "bmi",
+      "temperature"
+    ]
+  },
+  "manifest": "results/patient_manifest.csv",
+  "splits": "results/patient_splits.csv",
+  "n_bootstrap": 2000,
+  "seed": 42,
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "manifest_rows": 119,
+    "manifest_unique_patients": 119,
+    "label_counts": {
+      "0": 84,
+      "1": 35
+    },
+    "splits_path": "results/patient_splits.csv",
+    "splits_sha256": "a80b7b0573c496d7c0cd3530899eeaef1357251c3eafef5f855a1b8fc531972b"
+  },
+  "threshold_rule": "balanced accuracy maximized on validation patients of each fold",
+  "aggregation": "out-of-fold predictions pooled within a repeat; CI bootstrapped on repeat-averaged per-patient probability"
+}

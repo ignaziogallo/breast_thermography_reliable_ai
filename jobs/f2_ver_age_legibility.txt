@@ -1,0 +1,29 @@
+# Phase 2, question 3 of the audit on the verification cohort: is age legible in the pixels
+# with the diagnosis held constant? A frozen probe recovers the within-stratum age band
+# (older / younger than the stratum median) from the anterior thermogram.
+#
+# Cohorts and folds were built on the workstation by
+#     python scripts/37_verification_confounder.py --build-probe-cohorts
+# and are committed under results/confounders/verification_age_probe/. Nothing here rebuilds
+# them, so the folds these runs use are exactly the ones that were inspected.
+#
+# Frozen backbone, fixed 15-epoch budget, no validation-based epoch selection: the same
+# recipe as the DMR-IR era decoders and the matched ladder, so the two cohorts' legibility
+# numbers are comparable and neither inherits the selection failure documented in the
+# supplement.
+#
+# Cost: four probes over 79 and 34 patients, one anterior image each. Minutes on an A100.
+#
+# The benign stratum (79 patients, 41/38) is the informative one -- it is the analogue of
+# DMR-IR's 2012-vs-2013 within-benign contrast. The malignant stratum has 34 patients
+# (17/17) and is run for completeness; whatever it returns, it cannot carry a claim, and the
+# supplement says so.
+#
+# After the runs finish, back on the workstation:
+#     python scripts/36_consistency_sweep.py      # anchors for the new numbers
+# and paste the legibility row into the supplement's cohort-2 table.
+
+python scripts/04_train_single_view.py --data-root data/Breast-Thermal-Image --manifest results/confounders/verification_age_probe/benign/manifest.csv --splits results/confounders/verification_age_probe/benign/splits.csv --view anterior --encoder convnext_tiny --freeze-backbone --no-early-stopping --epochs 15 --batch-size 16 --num-workers 4 --output-dir results/experiment_ver_12_age_within_benign_convnext > logs/f2_ver_age_within_benign_convnext.log 2>&1
+python scripts/04_train_single_view.py --data-root data/Breast-Thermal-Image --manifest results/confounders/verification_age_probe/benign/manifest.csv --splits results/confounders/verification_age_probe/benign/splits.csv --view anterior --encoder swin_tiny_patch4_window7_224 --freeze-backbone --no-early-stopping --epochs 15 --batch-size 16 --num-workers 4 --output-dir results/experiment_ver_12_age_within_benign_swin > logs/f2_ver_age_within_benign_swin.log 2>&1
+python scripts/04_train_single_view.py --data-root data/Breast-Thermal-Image --manifest results/confounders/verification_age_probe/malignant/manifest.csv --splits results/confounders/verification_age_probe/malignant/splits.csv --view anterior --encoder convnext_tiny --freeze-backbone --no-early-stopping --epochs 15 --batch-size 16 --num-workers 4 --output-dir results/experiment_ver_12_age_within_malignant_convnext > logs/f2_ver_age_within_malignant_convnext.log 2>&1
+python scripts/04_train_single_view.py --data-root data/Breast-Thermal-Image --manifest results/confounders/verification_age_probe/malignant/manifest.csv --splits results/confounders/verification_age_probe/malignant/splits.csv --view anterior --encoder swin_tiny_patch4_window7_224 --freeze-backbone --no-early-stopping --epochs 15 --batch-size 16 --num-workers 4 --output-dir results/experiment_ver_12_age_within_malignant_swin > logs/f2_ver_age_within_malignant_swin.log 2>&1

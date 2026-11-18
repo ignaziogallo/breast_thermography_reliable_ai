@@ -1,0 +1,27 @@
+{
+  "experiment": "experiment_dmr_08_epoch_allframes",
+  "research_question": "does the image score add information given visit_date",
+  "covariate": "visit_date",
+  "n_patients_scored": 236,
+  "n_patients_dropped_absent_from_manifest": 0,
+  "patients_dropped": "0 patient(s); identifiers not distributed",
+  "image_model": "patient_level",
+  "image_predictions": "results/experiment_dmr_01_leakage/predictions.csv",
+  "primary_variant": "visit_date_plus_image_fixed (no label fitting; leakage-free)",
+  "exploratory_variant": "visit_date_plus_image_stacked_exploratory (meta-model fitted on training patients whose image scores depend on the test fold)",
+  "caveat": "a multimodal model containing visit_date beats visit_date-alone by construction; the quantity of interest is the paired difference against visit_date_only_reference",
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "manifest_rows": 236,
+    "manifest_unique_patients": 236,
+    "label_counts": {
+      "0": 140,
+      "1": 96
+    },
+    "splits_path": "results/dmr_patient_splits.csv",
+    "splits_sha256": "c137f5150f2b186a13f3e1f88408ac9dd032597528edb1549b64eb513e1d75c0"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

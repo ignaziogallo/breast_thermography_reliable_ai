@@ -1,0 +1,2 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+convnext_tiny_breast_level,0.6286,0.0281,0.5702,0.0249,0.4286,0.0452,0.7119,0.0424,0.3842,0.0358,0.4286,0.0452,0.4041,0.0326,0.6172,0.0258,0.4749,0.0315,0.2263,0.0107,0.1607,0.0242,0.5412,0.0719

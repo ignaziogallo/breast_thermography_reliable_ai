@@ -1,0 +1,72 @@
+{
+  "experiment": "experiment_02_single_view",
+  "research_question": "does an anterior-view CNN exceed the E7/E7b reference baselines",
+  "arm": "finetune_discriminative_lr",
+  "model_name": "swin_tiny_patch4_window7_224_finetune_discriminative_lr",
+  "success_criterion": "pre-specified: the lower bound of the bootstrap 95% CI on the AUROC difference against logistic_age_only must exceed 0 (scripts/14_compare_models.py --reference logistic_age_only)",
+  "quality_gate": {
+    "criterion": "at most 5 of 25 folds may have prediction std < 0.05",
+    "collapsed_folds": 0,
+    "total_folds": 25,
+    "threshold": 0.05,
+    "max_allowed": 5,
+    "passed": true,
+    "collapsed_fold_ids": []
+  },
+  "encoder": "swin_tiny_patch4_window7_224",
+  "pretrained": true,
+  "freeze_backbone": false,
+  "early_stopping": false,
+  "encoder_selection": "fixed in advance; not chosen by comparison (see paper Section on single-view)",
+  "trainable_parameters": 27520123,
+  "view": "frontal",
+  "image_size": 224,
+  "n_patients_scored": 231,
+  "n_patients_dropped_absent_from_manifest": 5,
+  "patients_dropped": "5 patient(s); identifiers not distributed",
+  "epochs_cap": 30,
+  "patience": 8,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "backbone_lr_scale": 0.01,
+  "warmup_epochs": 3,
+  "optimiser_steps_per_fold": 300,
+  "optimiser": "AdamW",
+  "scheduler": "LinearLR warmup then CosineAnnealingLR",
+  "loss": "BCEWithLogits with pos_weight from the training partition",
+  "normalisation": "per-image z-score; exports are auto-ranged so ImageNet statistics do not apply",
+  "augmentation": {
+    "random_affine_degrees": 10.0,
+    "random_affine_translate": 0.05,
+    "random_affine_scale": [
+      0.9,
+      1.1
+    ],
+    "horizontal_flip": false,
+    "horizontal_flip_rationale": "mirroring exchanges left and right breast; disease is unilateral",
+    "photometric_jitter": false,
+    "photometric_jitter_rationale": "images are standardised individually; absolute intensity is not meaningful"
+  },
+  "model_selection": "none: fixed epoch budget, the final model is scored",
+  "threshold_rule": "balanced accuracy maximized on validation patients of each fold",
+  "aggregation": "one anterior image per patient; out-of-fold predictions pooled within a repeat",
+  "features_saved": true,
+  "data_root": "data/DMR-IR",
+  "n_bootstrap": 2000,
+  "seed": 42,
+  "inputs": {
+    "manifest_path": "results/dmr_view_table_frontal.csv",
+    "manifest_sha256": "fc74c0d0f512d7e219f0ea701918d87a4c62b2c0004bd8688723648506758b42",
+    "manifest_rows": 231,
+    "manifest_unique_patients": 231,
+    "label_counts": {
+      "0": 137,
+      "1": 94
+    },
+    "splits_path": "results/dmr_patient_splits.csv",
+    "splits_sha256": "c137f5150f2b186a13f3e1f88408ac9dd032597528edb1549b64eb513e1d75c0"
+  },
+  "device": "cuda",
+  "runtime_seconds": 869.4
+}

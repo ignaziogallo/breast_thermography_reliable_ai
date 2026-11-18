@@ -1,0 +1,20 @@
+cohort,n_patients,n_benign,n_malignant,age_benign_min,age_benign_max,age_benign_mean,age_malignant_min,age_malignant_max,age_malignant_mean,confounder_auroc,note,max_abs_smd,evaluable,n_pairs,control_for
+original,119,84,35,18.0,78.0,45.095238095238095,41.0,81.0,57.4,0.7685,"the cohort as distributed, after this study's exclusions",1.0518,True,,
+overlap,91,57,34,41.0,78.0,51.29824561403509,41.0,74.0,56.705882352941174,0.6489,restricted to the age range both classes occupy,0.5586,True,,
+age_matched_2,56,28,28,41.0,76.0,54.357142857142854,41.0,74.0,54.142857142857146,0.5089,1:1 nearest-neighbour matching within +/-2,0.0675,True,28.0,
+age_matched_5,60,30,30,41.0,78.0,55.166666666666664,41.0,81.0,55.53333333333333,0.5028,1:1 nearest-neighbour matching within +/-5,0.0502,True,30.0,
+age_matched_10,68,34,34,41.0,78.0,54.94117647058823,41.0,81.0,57.05882352941177,0.5476,1:1 nearest-neighbour matching within +/-10,0.2044,True,34.0,
+propensity_clinical,60,30,30,22.0,76.0,44.96666666666667,41.0,81.0,56.733333333333334,0.78,"1:1 propensity matching on ['bmi', 'temperature'], caliper 0.2 SD (0.0133)",0.9963,True,30.0,
+propensity_with_age,56,28,28,40.0,78.0,55.0,41.0,81.0,54.892857142857146,0.5077,"1:1 propensity matching on ['bmi', 'temperature', 'age'], caliper 0.2 SD (0.0389)",0.1096,True,28.0,
+sizecontrol_28b28m_s1,56,28,28,19.0,78.0,44.642857142857146,42.0,81.0,58.857142857142854,0.7774,"random subset of 28+28 patients, confounding intact; the size control for age_matched_2, propensity_with_age",1.0432,True,,age_matched_2;propensity_with_age
+sizecontrol_28b28m_s2,56,28,28,24.0,78.0,46.642857142857146,41.0,74.0,58.0,0.75,"random subset of 28+28 patients, confounding intact; the size control for age_matched_2, propensity_with_age",0.9914,True,,age_matched_2;propensity_with_age
+sizecontrol_28b28m_s3,56,28,28,19.0,78.0,47.964285714285715,41.0,81.0,58.07142857142857,0.7188,"random subset of 28+28 patients, confounding intact; the size control for age_matched_2, propensity_with_age",0.8149,True,,age_matched_2;propensity_with_age
+sizecontrol_30b30m_s1,60,30,30,19.0,78.0,45.266666666666666,41.0,81.0,55.86666666666667,0.7239,"random subset of 30+30 patients, confounding intact; the size control for age_matched_5, propensity_clinical",0.7948,True,,age_matched_5;propensity_clinical
+sizecontrol_30b30m_s2,60,30,30,24.0,76.0,46.766666666666666,41.0,81.0,58.166666666666664,0.7278,"random subset of 30+30 patients, confounding intact; the size control for age_matched_5, propensity_clinical",0.9587,True,,age_matched_5;propensity_clinical
+sizecontrol_30b30m_s3,60,30,30,19.0,78.0,47.06666666666667,41.0,81.0,57.233333333333334,0.7289,"random subset of 30+30 patients, confounding intact; the size control for age_matched_5, propensity_clinical",0.8493,True,,age_matched_5;propensity_clinical
+sizecontrol_34b34m_s1,68,34,34,19.0,78.0,46.23529411764706,41.0,81.0,57.794117647058826,0.7396,"random subset of 34+34 patients, confounding intact; the size control for age_matched_10",0.9247,True,,age_matched_10
+sizecontrol_34b34m_s2,68,34,34,21.0,76.0,44.85294117647059,41.0,81.0,57.411764705882355,0.7807,"random subset of 34+34 patients, confounding intact; the size control for age_matched_10",1.1156,True,,age_matched_10
+sizecontrol_34b34m_s3,68,34,34,19.0,69.0,46.705882352941174,41.0,81.0,57.44117647058823,0.7279,"random subset of 34+34 patients, confounding intact; the size control for age_matched_10",0.8974,True,,age_matched_10
+sizecontrol_57b34m_s1,91,57,34,18.0,78.0,44.1578947368421,41.0,81.0,57.294117647058826,0.7884,"random subset of 57+34 patients, confounding intact; the size control for overlap",1.1261,True,,overlap
+sizecontrol_57b34m_s2,91,57,34,18.0,76.0,44.49122807017544,41.0,81.0,57.205882352941174,0.7753,"random subset of 57+34 patients, confounding intact; the size control for overlap",1.058,True,,overlap
+sizecontrol_57b34m_s3,91,57,34,19.0,76.0,46.0,41.0,81.0,56.94117647058823,0.7585,"random subset of 57+34 patients, confounding intact; the size control for overlap",1.0137,True,,overlap

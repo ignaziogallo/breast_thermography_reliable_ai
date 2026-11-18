@@ -1,0 +1,43 @@
+{
+  "experiment": "dmr_session_conditional",
+  "research_question": "does a score still discriminate between patients the confounder cannot separate",
+  "estimator": "c_W = P(score_malignant > score_benign | |C_mal - C_ben| <= W), ties 0.5; caliper 'none' recovers the ordinary AUROC exactly",
+  "confounder": "visit_date",
+  "stratum": "visit_date",
+  "stratum_rationale": "a caliper bounds the distance on a continuous confounder; it does not hold an acquisition session constant, and a label-pure session is a shortcut the caliper leaves open",
+  "control_arm": "confounder_alone_control",
+  "control_orientation": "fixed once on the full cohort (sign = +1)",
+  "control_rationale": "the confounder's own c_W must fall towards 0.5 as the caliper narrows; that it does is what shows the caliper controls it",
+  "calipers": [
+    "none",
+    180.0,
+    90.0,
+    30.0,
+    7.0
+  ],
+  "reference_for_differences": "confounder_alone_control",
+  "decision_rule": "improvement demonstrated only when delta_ci_lower > 0; an interval containing zero means not demonstrated, not equivalent",
+  "bootstrap": "patients resampled within class, admissible pairs recomputed per draw",
+  "caveat": "the caliper controls what the *evaluation* pairs can differ by; it does not remove a shortcut a model trained on the full cohort may already have learned. Training on a matched cohort is the complementary experiment.",
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "prediction_files": {
+      "experiment_dmr_01_leakage_combined::patient_level": "results/experiment_dmr_01_leakage_combined/predictions.csv",
+      "experiment_dmr_11_allframes_swin_tiny_patch4_window7_224::patient_level": "results/experiment_dmr_11_allframes_swin_tiny_patch4_window7_224/predictions.csv",
+      "convnext_tiny_finetune_discriminative_lr": "results/experiment_dmr_11_encoder_convnext_tiny_finetune/predictions.csv",
+      "swin_tiny_patch4_window7_224_finetune_discriminative_lr": "results/experiment_dmr_11_encoder_swin_tiny_patch4_window7_224_finetune/predictions.csv",
+      "swin_tiny_patch4_window7_224_linear_probe": "results/experiment_dmr_11_encoder_swin_tiny_patch4_window7_224_probe/predictions.csv"
+    }
+  },
+  "n_common_patients": 231,
+  "patients_dropped_per_arm": {
+    "experiment_dmr_01_leakage_combined::patient_level": 5,
+    "experiment_dmr_11_allframes_swin_tiny_patch4_window7_224::patient_level": 5,
+    "convnext_tiny_finetune_discriminative_lr": 0,
+    "swin_tiny_patch4_window7_224_finetune_discriminative_lr": 0,
+    "swin_tiny_patch4_window7_224_linear_probe": 0
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

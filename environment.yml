@@ -1,0 +1,21 @@
+# Conda equivalent of requirements-training.txt: the analysis stack plus what training needs.
+# For the analysis-only path, `pip install -r requirements.txt` in any Python >= 3.10 is enough.
+name: breast-thermography-reliable-ai
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - numpy
+  - pandas
+  - openpyxl
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - matplotlib
+  - pillow
+  - pytest
+  - pip:
+      - torch>=2.1
+      - torchvision>=0.16
+      - timm>=0.9

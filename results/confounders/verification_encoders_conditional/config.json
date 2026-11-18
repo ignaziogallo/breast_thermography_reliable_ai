@@ -1,0 +1,36 @@
+{
+  "experiment": "verification_encoders_conditional",
+  "research_question": "does a score still discriminate between patients the confounder cannot separate",
+  "estimator": "c_W = P(score_malignant > score_benign | |C_mal - C_ben| <= W), ties 0.5; caliper 'none' recovers the ordinary AUROC exactly",
+  "confounder": "age",
+  "control_arm": "confounder_alone_control",
+  "control_orientation": "fixed once on the full cohort (sign = +1)",
+  "control_rationale": "the confounder's own c_W must fall towards 0.5 as the caliper narrows; that it does is what shows the caliper controls it",
+  "calipers": [
+    "none",
+    10.0,
+    5.0,
+    2.0
+  ],
+  "reference_for_differences": "confounder_alone_control",
+  "decision_rule": "improvement demonstrated only when delta_ci_lower > 0; an interval containing zero means not demonstrated, not equivalent",
+  "bootstrap": "patients resampled within class, admissible pairs recomputed per draw",
+  "caveat": "the caliper controls what the *evaluation* pairs can differ by; it does not remove a shortcut a model trained on the full cohort may already have learned. Training on a matched cohort is the complementary experiment.",
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "prediction_files": {
+      "convnext_tiny_finetune_discriminative_lr": "results/experiment_ver_11_encoder_convnext_tiny_finetune/predictions.csv",
+      "swin_tiny_patch4_window7_224_finetune_discriminative_lr": "results/experiment_ver_11_encoder_swin_tiny_patch4_window7_224_finetune/predictions.csv",
+      "convnext_tiny_linear_probe": "results/experiment_02_single_view_linear_probe/predictions.csv"
+    }
+  },
+  "n_common_patients": 119,
+  "patients_dropped_per_arm": {
+    "convnext_tiny_finetune_discriminative_lr": 0,
+    "swin_tiny_patch4_window7_224_finetune_discriminative_lr": 0,
+    "convnext_tiny_linear_probe": 0
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

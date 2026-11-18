@@ -1,0 +1,51 @@
+# TO COMPLETE AFTER THE ARXIV SUBMISSION: the preprint identifier below ("arXiv:TODO")
+# is the only remaining placeholder. Replace it with the identifier arXiv assigns.
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper it accompanies."
+type: software
+title: "Leakage-Free Is Not Confounder-Free: code and aggregate results"
+version: 1.0.0
+date-released: "2026-11-17"
+license: Apache-2.0
+authors:
+  - family-names: "Gallo"
+    given-names: "Ignazio"
+    affiliation: "Department of Theoretical and Applied Sciences, University of Insubria, Varese, Italy"
+    email: "ignazio.gallo@uninsubria.it"
+  - family-names: "Gatti"
+    given-names: "Mattia"
+    affiliation: "Department of Theoretical and Applied Sciences, University of Insubria, Varese, Italy"
+  - family-names: "Sgroi"
+    given-names: "Leonardo"
+    affiliation: "Department of Theoretical and Applied Sciences, University of Insubria, Varese, Italy"
+  - family-names: "Castillo"
+    given-names: "Darwin"
+    affiliation: "Departamento de Química, Facultad de Ciencias Exactas y Naturales, Universidad Técnica Particular de Loja, Loja, Ecuador"
+  - family-names: "Jiménez-Gaona"
+    given-names: "Yuliana"
+    affiliation: "Departamento de Química, Facultad de Ciencias Exactas y Naturales, Universidad Técnica Particular de Loja, Loja, Ecuador"
+  - family-names: "Landro"
+    given-names: "Nicola"
+    affiliation: "Joint Research Centre, Ispra, Italy"
+preferred-citation:
+  type: article
+  title: "Leakage-Free Is Not Confounder-Free: What a Patient-Level Split Cannot Certify About a Medical Imaging Benchmark"
+  authors:
+    - family-names: "Gallo"
+      given-names: "Ignazio"
+    - family-names: "Gatti"
+      given-names: "Mattia"
+    - family-names: "Sgroi"
+      given-names: "Leonardo"
+    - family-names: "Castillo"
+      given-names: "Darwin"
+    - family-names: "Jiménez-Gaona"
+      given-names: "Yuliana"
+    - family-names: "Landro"
+      given-names: "Nicola"
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:TODO"
+      description: "The arXiv preprint"

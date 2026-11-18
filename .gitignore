@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# The datasets are not redistributed: link them into data/ (see the README).
+/data/*
+!/data/.keep
+/logs/*
+!/logs/.keep
+
+# Written by a run, and rewritten by the next one.
+/paper/figures/
+/results/reproduce_logs/
+/results/paper_consistency.md
+/results/pretrained/
+results/**/features/
+results/**/*.pt
+results/**/*.pth
+results/**/*.ckpt

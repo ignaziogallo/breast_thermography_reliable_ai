@@ -1,0 +1,12 @@
+clause,post_diagnostic,patients_with_clause,n,auroc_of_presence,example
+demographics,False,236,236,,Patient is 63 years old and identifies as multiracial.
+menarche,False,220,236,0.4518,Menarche occurred at age 12.
+menstrual,False,154,236,0.3626,Her last menstrual period was at age 49.
+complaints,False,153,236,0.4101,Patient complaints: yes.
+signs_symptoms,False,98,236,0.3958,Reported symptoms include: feels an uncomfortable to lie down.
+eating_habits,False,236,236,,Has eating habits low in fat.
+family_history,False,68,236,0.4854,The patient has a family history of diabetes.
+medical_history,True,223,236,0.485,Has a medical history of: mammography; wart-like lesion on both breasts.
+breast_findings,True,1,236,0.4964,plastic surgery scars.
+exam_protocol,False,232,236,0.5055,"Regarding the exam protocol, body temperature was 34.9 degrees Celsius."
+UNMATCHED,False,113,236,0.3159,Had a hysterectomy.

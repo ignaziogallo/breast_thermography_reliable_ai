@@ -1,0 +1,26 @@
+{
+  "cohort": "sizecontrol_57b34m_s3",
+  "note": "random subset of 57+34 patients, confounding intact; the size control for overlap",
+  "dataset": "verification",
+  "confounder": "age",
+  "confounder_units": "age at visit (years)",
+  "covariates_reported": [
+    "age",
+    "bmi",
+    "temperature"
+  ],
+  "selection_inputs": "metadata and the diagnostic label only; no model score of any kind enters cohort construction",
+  "counts": {
+    "n_patients": 91,
+    "n_benign": 57,
+    "n_malignant": 34
+  },
+  "confounder_auroc_after_control": 0.7585,
+  "max_abs_smd": 1.0137,
+  "evaluable": true,
+  "folds": 5,
+  "repeats": 5,
+  "seed": 42,
+  "source_manifest": "results/patient_manifest.csv",
+  "source_manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253"
+}

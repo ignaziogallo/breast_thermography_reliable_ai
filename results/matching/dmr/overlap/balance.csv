@@ -1,0 +1,5 @@
+cohort,covariate,n_malignant,n_benign,mean_malignant,mean_benign,smd,balanced_at_0.1
+overlap,acquisition_days,32,28,650.375,439.67857142857144,1.1995054094534325,False
+overlap,age_at_visit,32,28,56.625,54.857142857142854,0.15470381439015712,False
+overlap,menarche,32,28,11.5,11.714285714285714,-0.05533809418302398,True
+overlap,body_temperature,32,28,34.5875,34.31071428571428,0.042142351975778224,True

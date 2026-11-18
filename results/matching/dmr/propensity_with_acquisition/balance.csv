@@ -1,0 +1,5 @@
+cohort,covariate,n_malignant,n_benign,mean_malignant,mean_benign,smd,balanced_at_0.1
+propensity_with_acquisition,acquisition_days,13,13,453.46153846153845,470.46153846153845,-0.09086944635570786,True
+propensity_with_acquisition,age_at_visit,13,13,55.15384615384615,51.69230769230769,0.27222818691737266,False
+propensity_with_acquisition,menarche,13,13,12.23076923076923,12.0,0.07870925698254562,True
+propensity_with_acquisition,body_temperature,13,13,36.02307692307692,35.43076923076923,0.6658581434148728,False

@@ -1,0 +1,29 @@
+{
+  "experiment": "experiment_07_metadata",
+  "models": [
+    "logistic_age_only"
+  ],
+  "features": {
+    "logistic_age_only": [
+      "age"
+    ]
+  },
+  "manifest": "results/dmr_patient_manifest.csv",
+  "splits": "results/dmr_patient_splits.csv",
+  "n_bootstrap": 2000,
+  "seed": 42,
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "manifest_rows": 236,
+    "manifest_unique_patients": 236,
+    "label_counts": {
+      "0": 140,
+      "1": 96
+    },
+    "splits_path": "results/dmr_patient_splits.csv",
+    "splits_sha256": "c137f5150f2b186a13f3e1f88408ac9dd032597528edb1549b64eb513e1d75c0"
+  },
+  "threshold_rule": "balanced accuracy maximized on validation patients of each fold",
+  "aggregation": "out-of-fold predictions pooled within a repeat; CI bootstrapped on repeat-averaged per-patient probability"
+}

@@ -1,0 +1,10 @@
+model,metric,estimate,ci_lower,ci_upper,n_bootstrap_valid
+convnext_tiny_linear_probe,accuracy,0.6818181818181818,0.5,0.8636363636363636,2000
+convnext_tiny_linear_probe,balanced_accuracy,0.6818181818181819,0.48717948717948717,0.8677083333333323,2000
+convnext_tiny_linear_probe,sensitivity,0.5454545454545454,0.25,0.8571428571428571,2000
+convnext_tiny_linear_probe,specificity,0.8181818181818182,0.5714285714285714,1.0,2000
+convnext_tiny_linear_probe,precision,0.75,0.4,1.0,2000
+convnext_tiny_linear_probe,recall,0.5454545454545454,0.25,0.8571428571428571,2000
+convnext_tiny_linear_probe,f1,0.631578947368421,0.3076923076923077,0.8571428571428571,2000
+convnext_tiny_linear_probe,roc_auc,0.6611570247933884,0.4,0.9008264462809917,2000
+convnext_tiny_linear_probe,pr_auc,0.7092762035943855,0.4465795209298499,0.9324572320953899,2000

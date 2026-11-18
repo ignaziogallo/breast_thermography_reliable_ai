@@ -1,0 +1,9 @@
+statistic,value
+folds,25.0
+collapsed_folds,14.0
+corr_selected_val_vs_test,0.06363286784633124
+mean_selected_val_auroc,0.77
+mean_test_auroc,0.6277100840336135
+mean_optimism,0.14228991596638652
+median_selected_epoch,4.0
+n_validation_patients,15.0

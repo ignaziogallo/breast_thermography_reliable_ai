@@ -1,0 +1,6 @@
+{
+  "question": "does a fine-tuned diagnostic representation still encode the acquisition era",
+  "contrast": "benign 2012 vs 2013",
+  "probe": "standardised logistic regression, C=1, fitted per fold on that fold's training patients and scored on its held-out patients",
+  "comparison": "the frozen-representation decodes reported in the encoder table (0.813 ConvNeXt-T, 0.821 Swin-T, 0.823 ResNet-50)"
+}

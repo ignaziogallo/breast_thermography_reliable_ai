@@ -1,0 +1,27 @@
+{
+  "cohort": "sizecontrol_14b14m_s3",
+  "note": "random subset of 14+14 patients, confounding intact; the size control for year_balanced, acquisition_days_matched_180",
+  "dataset": "dmr",
+  "confounder": "acquisition_days",
+  "confounder_units": "acquisition date (days since the first visit)",
+  "covariates_reported": [
+    "acquisition_days",
+    "age_at_visit",
+    "menarche",
+    "body_temperature"
+  ],
+  "selection_inputs": "metadata and the diagnostic label only; no model score of any kind enters cohort construction",
+  "counts": {
+    "n_patients": 28,
+    "n_benign": 14,
+    "n_malignant": 14
+  },
+  "confounder_auroc_after_control": 0.9796,
+  "max_abs_smd": 2.3581,
+  "evaluable": true,
+  "folds": 5,
+  "repeats": 5,
+  "seed": 42,
+  "source_manifest": "results/dmr_patient_manifest.csv",
+  "source_manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94"
+}

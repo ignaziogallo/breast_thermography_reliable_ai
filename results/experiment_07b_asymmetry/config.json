@@ -1,0 +1,60 @@
+{
+  "experiment": "experiment_07b_asymmetry",
+  "feature_sets": {
+    "age_only": [
+      "age"
+    ],
+    "asymmetry": [
+      "asym_mean_abs",
+      "asym_p95_abs",
+      "asym_area_frac",
+      "asym_net_abs",
+      "asym_focality",
+      "breast_band_std",
+      "hotspot_intensity",
+      "obl_contrast_diff_abs",
+      "obl_contrast_max",
+      "obl_std_diff_abs"
+    ],
+    "asymmetry_metadata": [
+      "asym_mean_abs",
+      "asym_p95_abs",
+      "asym_area_frac",
+      "asym_net_abs",
+      "asym_focality",
+      "breast_band_std",
+      "hotspot_intensity",
+      "obl_contrast_diff_abs",
+      "obl_contrast_max",
+      "obl_std_diff_abs",
+      "age",
+      "bmi",
+      "temperature"
+    ],
+    "asymmetry_net_exploratory": [
+      "asym_net_abs"
+    ]
+  },
+  "estimators": [
+    "logistic"
+  ],
+  "data_root": "data/Breast-Thermal-Image",
+  "manifest": "results/patient_manifest.csv",
+  "splits": "results/patient_splits.csv",
+  "n_bootstrap": 2000,
+  "seed": 42,
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "manifest_rows": 119,
+    "manifest_unique_patients": 119,
+    "label_counts": {
+      "0": 84,
+      "1": 35
+    },
+    "splits_path": "results/patient_splits.csv",
+    "splits_sha256": "a80b7b0573c496d7c0cd3530899eeaef1357251c3eafef5f855a1b8fc531972b"
+  },
+  "threshold_rule": "balanced accuracy maximized on validation patients of each fold",
+  "scale_invariance": "every image z-scored before feature extraction; exports are per-image auto-ranged"
+}

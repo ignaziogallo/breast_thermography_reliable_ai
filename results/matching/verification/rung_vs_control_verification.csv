@@ -1,0 +1,8 @@
+dataset,cohort,n_patients,n_scored,n_benign,n_malignant,confounder_auroc,image_auroc,ci_lower,ci_upper,quality_gate_failed,n_size_controls,control_auroc_min,control_auroc_median,control_auroc_max,control_aurocs,all_controls_above_rung_ci
+verification,original,119,119,84,35,0.7685,0.5816,0.4732,0.6908,False,0,,,,,False
+verification,overlap,91,91,57,34,0.6489,0.5279,0.3934,0.6519,False,3,0.5645,0.5929,0.5996,0.5996;0.5929;0.5645,False
+verification,age_matched_2,56,56,28,28,0.5089,0.4885,0.3333,0.6517,False,3,0.4094,0.4694,0.5816,0.5816;0.4694;0.4094,False
+verification,age_matched_5,60,60,30,30,0.5028,0.5011,0.3527,0.6574,False,3,0.5367,0.6022,0.6056,0.6056;0.6022;0.5367,False
+verification,age_matched_10,68,68,34,34,0.5476,0.5536,0.4149,0.6923,False,3,0.5164,0.5433,0.5917,0.5164;0.5917;0.5433,False
+verification,propensity_clinical,60,60,30,30,0.78,0.5811,0.4289,0.7225,False,3,0.5367,0.6022,0.6056,0.6056;0.6022;0.5367,False
+verification,propensity_with_age,56,56,28,28,0.5077,0.5077,0.3515,0.6551,False,3,0.4094,0.4694,0.5816,0.5816;0.4694;0.4094,False

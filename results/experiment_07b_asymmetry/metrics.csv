@@ -1,0 +1,5 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+age_only,0.7143,0.0,0.686,0.0046,0.6171,0.0156,0.7548,0.0065,0.5119,0.0003,0.6171,0.0156,0.5595,0.0063,0.7577,0.007,0.5346,0.0168,0.2335,0.0005,0.1998,0.0028,0.6672,0.035
+asymmetry,0.6454,0.0192,0.6055,0.0195,0.5086,0.0424,0.7024,0.0304,0.4164,0.0242,0.5086,0.0424,0.4573,0.0261,0.6307,0.027,0.4207,0.0209,0.2429,0.008,0.201,0.0158,0.6101,0.0334
+asymmetry_metadata,0.7025,0.0312,0.6843,0.0371,0.64,0.0658,0.7286,0.0351,0.4962,0.0411,0.64,0.0658,0.5583,0.0459,0.7078,0.0289,0.5056,0.049,0.2234,0.0121,0.1964,0.0127,0.6807,0.038
+asymmetry_net_exploratory,0.6908,0.015,0.6343,0.0213,0.4971,0.0383,0.7714,0.01,0.4751,0.025,0.4971,0.0383,0.4857,0.0307,0.683,0.0119,0.4643,0.0087,0.2428,0.001,0.2043,0.0031,0.605,0.0953

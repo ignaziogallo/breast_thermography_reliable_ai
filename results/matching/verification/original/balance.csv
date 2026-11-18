@@ -1,0 +1,4 @@
+cohort,covariate,n_malignant,n_benign,mean_malignant,mean_benign,smd,balanced_at_0.1
+original,age,35,84,57.4,45.095238095238095,1.051819661182314,False
+original,bmi,35,84,30.70124339502315,28.66459328118821,0.32545653828845167,False
+original,temperature,35,84,36.04,35.982142857142854,0.14050432312480168,False

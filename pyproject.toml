@@ -1,0 +1,40 @@
+# This repository is run in place, from its root, and is not an installable package:
+# `pip install -r requirements.txt`, then `python scripts/<name>.py`. The file exists to
+# hold the project metadata and the configuration of the tools below.
+[project]
+name = "breast-thermography-reliable-ai"
+version = "1.0.0"
+description = "Confounder audit of breast-thermography benchmarks: analysis code, experiment scripts and stored results"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+# Tests and scripts import the library as `src.<module>`, resolved from the repository root.
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["release"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = [
+    # zip(strict=True) would turn a silent truncation into an error, which is right in
+    # principle, but every zipped pair here comes from one table or one model output and
+    # adding the flag everywhere would be a behaviour change made for the linter.
+    "B905",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src"]
+
+[tool.ruff.lint.per-file-ignores]
+# The training, dataset-preparation and baseline scripts, and the tests, were moved onto the
+# shared library modules and given a uniform header, but are otherwise as they were written.
+# Their long lines and in-loop helper closures are not enforced until they are restructured;
+# every other file is held to the full rule set.
+"scripts/0[3-9]*.py" = ["E501", "B023", "B007", "E731"]
+"scripts/1[4-9]*.py" = ["E501", "B023", "B007", "E731"]
+"scripts/2[0-9]*.py" = ["E501", "B023", "B007", "E731"]
+"tests/*.py" = ["E501", "B023", "B007"]

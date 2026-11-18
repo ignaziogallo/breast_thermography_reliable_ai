@@ -1,0 +1,5 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+image_only_reference,0.8729,0.0099,0.8546,0.0082,0.7562,0.0216,0.9529,0.0251,0.9186,0.0377,0.7562,0.0216,0.8289,0.0109,0.936,0.0037,0.9204,0.0053,0.1823,0.0003,0.2809,0.0101,0.8458,0.0237
+visit_date_only_reference,0.8466,0.0063,0.8115,0.0077,0.6229,0.0155,1.0,0.0,1.0,0.0,0.6229,0.0155,0.7676,0.0117,0.9808,0.0019,0.9748,0.0019,0.172,0.0004,0.2463,0.0071,0.9068,0.0222
+visit_date_plus_image_fixed,0.8424,0.0035,0.8066,0.0045,0.6146,0.0104,0.9986,0.0032,0.9967,0.0073,0.6146,0.0104,0.7603,0.007,0.9814,0.0012,0.9745,0.0018,0.1056,0.0042,0.156,0.0107,0.9008,0.0209
+visit_date_plus_image_stacked_exploratory,0.928,0.0131,0.9193,0.0157,0.8729,0.0298,0.9657,0.0032,0.9457,0.0057,0.8729,0.0298,0.9077,0.0181,0.9716,0.0053,0.9644,0.0072,0.0779,0.0109,0.1203,0.0257,0.9195,0.0099

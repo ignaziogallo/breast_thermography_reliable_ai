@@ -1,0 +1,16 @@
+project_name: breast_thermography_reliable_ai
+seed: 42
+data_root: Dataset-orig
+results_root: results
+reports_root: reports
+paper_root: paper
+patient_label_rule: any_pm_malignant
+splits:
+  n_splits: 5
+  n_repeats: 5
+  validation_fraction_within_train: 0.15
+  seeds: [42, 43, 44, 45, 46]
+audit:
+  compute_exact_hashes: true
+  compute_perceptual_hashes: true
+  near_duplicate_hamming_threshold: 4

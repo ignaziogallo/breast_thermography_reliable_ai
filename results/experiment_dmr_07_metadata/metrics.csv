@@ -1,0 +1,2 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+logistic_age_only,0.4881,0.0296,0.4835,0.0248,0.4583,0.0255,0.5086,0.0547,0.3912,0.0246,0.4583,0.0255,0.4216,0.0183,0.469,0.0302,0.4135,0.0219,0.2508,0.0007,0.0927,0.0004,0.5093,0.0347

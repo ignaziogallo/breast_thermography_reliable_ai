@@ -1,0 +1,53 @@
+# E5 -- does a fine-tuned representation still encode the acquisition era?
+#
+# The paper's era column is one frozen-probe decode per backbone; the exploitation claim is
+# about fine-tuned arms. No checkpoints or activations were ever stored, so answering this
+# needs the fine-tuned arms rerun with the representation dumped.
+#
+# `scripts/04_train_single_view.py --save-features` (new) writes, per fold, the
+# penultimate-layer vector of every patient in that fold's train/val/test partitions, under
+# <output-dir>/features/r{repeat}_f{fold}.npz. It is a forward pass in eval mode after
+# training, so it cannot alter what the run learns; the predictions of these runs must come
+# out identical to the ones already in results/, and that is the first thing to check.
+#
+# The hyperparameters below are copied from the config.json of the existing runs
+# (30 epochs, batch 16, lr 1e-4, backbone lr scale 0.01, 3 warmup epochs, no early stopping,
+# seed 42) precisely so that they reproduce. Output goes to *new* directories: the existing
+# results are what the submitted paper reports and must not be overwritten by a rerun that
+# happens to differ.
+#
+# Cost: two arms x 25 folds x 30 epochs over 231 frontal images. This is the same work the
+# original runs did, plus one forward pass per fold. Storage is about 20 MB per arm
+# (231 patients x 25 folds x 768 float32, compressed).
+#
+# ---------------------------------------------------------------------------------------
+# Step 0 -- smoke test, one fold, before spending the full budget. Check that
+# features/r1_f1.npz appears and that its train/val/test arrays have the expected shapes.
+# --limit-folds writes no results by design, so this costs one fold and proves the plumbing.
+
+python scripts/04_train_single_view.py --data-root data/DMR-IR --manifest results/dmr_view_table_frontal.csv --splits results/dmr_patient_splits.csv --view frontal --encoder convnext_tiny --backbone-lr-scale 0.01 --warmup-epochs 3 --no-early-stopping --epochs 30 --batch-size 16 --num-workers 4 --save-features --limit-folds 1 --output-dir results/experiment_dmr_15_features_smoke > logs/f3_e5_smoke.log 2>&1
+
+# ---------------------------------------------------------------------------------------
+# Step 1 -- the two fine-tuned arms, with features.
+
+python scripts/04_train_single_view.py --data-root data/DMR-IR --manifest results/dmr_view_table_frontal.csv --splits results/dmr_patient_splits.csv --view frontal --encoder convnext_tiny --backbone-lr-scale 0.01 --warmup-epochs 3 --no-early-stopping --epochs 30 --batch-size 16 --num-workers 4 --save-features --output-dir results/experiment_dmr_15_features_convnext_finetune > logs/f3_e5_convnext.log 2>&1
+python scripts/04_train_single_view.py --data-root data/DMR-IR --manifest results/dmr_view_table_frontal.csv --splits results/dmr_patient_splits.csv --view frontal --encoder swin_tiny_patch4_window7_224 --backbone-lr-scale 0.01 --warmup-epochs 3 --no-early-stopping --epochs 30 --batch-size 16 --num-workers 4 --save-features --output-dir results/experiment_dmr_15_features_swin_finetune > logs/f3_e5_swin.log 2>&1
+
+# ---------------------------------------------------------------------------------------
+# Step 2 -- the probe itself. CPU, seconds. Fits the era probe inside each fold, on that
+# fold's training patients, and scores its held-out patients; pools out of fold.
+
+python scripts/40_finetuned_era_probe.py --runs results/experiment_dmr_15_features_convnext_finetune results/experiment_dmr_15_features_swin_finetune > logs/f3_e5_probe.log 2>&1
+
+# ---------------------------------------------------------------------------------------
+# Reading the result. The comparison is against the frozen decodes already in the paper:
+# ConvNeXt-T 0.813, Swin-T 0.821. Higher means the diagnostic objective preserved or
+# sharpened the acquisition signature; at or below chance means era legibility is a property
+# of generic pretrained features that this task discards -- which would make the score-level
+# exploitation result stronger, not weaker, since the information would have survived a
+# representation that was discarding it. Both are reportable; neither moves the central
+# claim, and the supplement's "future work" sentence is replaced either way.
+#
+# Before reporting: confirm that predictions.csv of each new run matches the corresponding
+# experiment_dmr_11_encoder_*_finetune run. If they differ, the difference is the news and
+# must be understood before the era numbers are read at all.

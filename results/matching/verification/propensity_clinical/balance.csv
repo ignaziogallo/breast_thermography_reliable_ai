@@ -1,0 +1,4 @@
+cohort,covariate,n_malignant,n_benign,mean_malignant,mean_benign,smd,balanced_at_0.1
+propensity_clinical,age,30,30,56.733333333333334,44.96666666666667,0.9962557016885315,False
+propensity_clinical,bmi,30,30,29.676572344896407,29.574710686834926,0.018950257199229117,True
+propensity_clinical,temperature,30,30,35.99333333333333,36.00333333333334,-0.0252900832535779,True

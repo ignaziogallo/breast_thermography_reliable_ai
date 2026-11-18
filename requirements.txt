@@ -1,0 +1,13 @@
+# Analysis only: recompute every reported statistic, table and figure from the stored
+# predictions, and run the tests. CPU only -- no torch, no GPU, no dataset.
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+scipy>=1.10
+statsmodels>=0.14
+matplotlib>=3.7
+Pillow>=10.0
+# Needed only to read the second cohort's Diagnostics.xlsx (scripts/00_audit_dataset.py).
+# It is cheap, and keeping it here means dataset preparation works without a second install.
+openpyxl>=3.1
+pytest>=7.4

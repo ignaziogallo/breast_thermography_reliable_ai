@@ -1,0 +1,10 @@
+model,metric,estimate,ci_lower,ci_upper,n_bootstrap_valid
+convnext_tiny_finetune_discriminative_lr,accuracy,0.6302521008403361,0.5462184873949579,0.7142857142857143,2000
+convnext_tiny_finetune_discriminative_lr,balanced_accuracy,0.5880952380952381,0.492691947565543,0.6860632183908046,2000
+convnext_tiny_finetune_discriminative_lr,sensitivity,0.4857142857142857,0.3225518433179723,0.6538793103448274,2000
+convnext_tiny_finetune_discriminative_lr,specificity,0.6904761904761905,0.5955056179775281,0.7872406914893617,2000
+convnext_tiny_finetune_discriminative_lr,precision,0.3953488372093023,0.25,0.5384615384615384,2000
+convnext_tiny_finetune_discriminative_lr,recall,0.4857142857142857,0.3225518433179723,0.6538793103448274,2000
+convnext_tiny_finetune_discriminative_lr,f1,0.4358974358974359,0.2898550724637681,0.5641025641025641,2000
+convnext_tiny_finetune_discriminative_lr,roc_auc,0.6578231292517007,0.5476083467094702,0.7605527210884353,2000
+convnext_tiny_finetune_discriminative_lr,pr_auc,0.42214634696484415,0.29764750675950336,0.5997573428879748,2000

@@ -1,0 +1,71 @@
+{
+  "experiment": "experiment_02_single_view",
+  "research_question": "does an anterior-view CNN exceed the E7/E7b reference baselines",
+  "arm": "linear_probe",
+  "model_name": "convnext_tiny_linear_probe",
+  "success_criterion": "pre-specified: the lower bound of the bootstrap 95% CI on the AUROC difference against logistic_age_only must exceed 0 (scripts/14_compare_models.py --reference logistic_age_only)",
+  "quality_gate": {
+    "criterion": "at most 5 of 25 folds may have prediction std < 0.05",
+    "collapsed_folds": 0,
+    "total_folds": 25,
+    "threshold": 0.05,
+    "max_allowed": 5,
+    "passed": true,
+    "collapsed_fold_ids": []
+  },
+  "encoder": "convnext_tiny",
+  "pretrained": true,
+  "freeze_backbone": true,
+  "early_stopping": false,
+  "encoder_selection": "fixed in advance; not chosen by comparison (see paper Section on single-view)",
+  "trainable_parameters": 769,
+  "view": "anterior",
+  "image_size": 224,
+  "n_patients_scored": 119,
+  "n_patients_dropped_absent_from_manifest": 0,
+  "patients_dropped": "0 patient(s); identifiers not distributed",
+  "epochs_cap": 30,
+  "patience": 8,
+  "batch_size": 16,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.0001,
+  "backbone_lr_scale": 1.0,
+  "warmup_epochs": 0,
+  "optimiser_steps_per_fold": 120,
+  "optimiser": "AdamW",
+  "scheduler": "CosineAnnealingLR",
+  "loss": "BCEWithLogits with pos_weight from the training partition",
+  "normalisation": "per-image z-score; exports are auto-ranged so ImageNet statistics do not apply",
+  "augmentation": {
+    "random_affine_degrees": 10.0,
+    "random_affine_translate": 0.05,
+    "random_affine_scale": [
+      0.9,
+      1.1
+    ],
+    "horizontal_flip": false,
+    "horizontal_flip_rationale": "mirroring exchanges left and right breast; disease is unilateral",
+    "photometric_jitter": false,
+    "photometric_jitter_rationale": "images are standardised individually; absolute intensity is not meaningful"
+  },
+  "model_selection": "none: fixed epoch budget, the final model is scored",
+  "threshold_rule": "balanced accuracy maximized on validation patients of each fold",
+  "aggregation": "one anterior image per patient; out-of-fold predictions pooled within a repeat",
+  "data_root": "data/Breast-Thermal-Image",
+  "n_bootstrap": 2000,
+  "seed": 42,
+  "inputs": {
+    "manifest_path": "results/patient_manifest.csv",
+    "manifest_sha256": "932864f84d3cf0b29536c3cf79d1e8ec0f5e89f9a029e60e65948d44be638253",
+    "manifest_rows": 119,
+    "manifest_unique_patients": 119,
+    "label_counts": {
+      "0": 84,
+      "1": 35
+    },
+    "splits_path": "results/matching/verification/sizecontrol_57b34m_s3/splits.csv",
+    "splits_sha256": "a0b61309afcfcd33b1241734df280e33d8e82e26752ebf7df2e6bc263d964ad5"
+  },
+  "device": "cuda",
+  "runtime_seconds": 316.8
+}

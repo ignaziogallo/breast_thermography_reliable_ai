@@ -1,0 +1,6 @@
+statistic,observed,null_median,null_ci_lower,null_ci_upper,p_le_observed,n_permutations
+mixed_date_groups,3,44.0,38.0,50.0,0.0,10000
+cross_label_date_group_pairs,8,155.0,136.0,171.0,0.0,10000
+cross_label_pairs_in_cohort,13440,,,,,0
+patients_in_mixed_date_groups,10,,,,,0
+date_groups,86,,,,,0

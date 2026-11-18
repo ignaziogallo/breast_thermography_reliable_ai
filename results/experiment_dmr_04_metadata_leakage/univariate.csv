@@ -1,0 +1,12 @@
+field,kind,non_null,n,auroc,auroc_of_missingness
+age_at_visit,pre,235,236,0.5004,0.5052
+menarche,pre,236,236,0.5103,
+menopause,pre,69,236,0.7715,0.5182
+body_temperature,pre,232,236,0.6265,0.4945
+biopsy,POST-DIAGNOSTIC,217,236,0.8536,0.5902
+mastectomy,POST-DIAGNOSTIC,235,236,0.4708,0.4964
+mammography,POST-DIAGNOSTIC,227,236,0.4654,0.5469
+age_current,date-derived,235,236,0.3769,0.5052
+acquisition_days,date-derived,236,236,0.9813,
+age_current MINUS age_at_visit,date-derived,235,236,0.0337,
+"  same, sign-corrected",date-derived,235,236,0.9663,

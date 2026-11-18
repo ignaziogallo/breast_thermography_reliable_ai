@@ -1,0 +1,81 @@
+{
+  "experiment": "experiment_dmr_04_metadata_leakage",
+  "research_question": "does a metadata-only DMR-IR score come from clinical information or from records of the diagnostic pathway and the calendar",
+  "comparison": "Pinto et al. 2025 Table III reports 0.918 accuracy from text embeddings of the metadata alone",
+  "arms": {
+    "pre_diagnostic": [
+      "age_at_visit",
+      "menarche",
+      "menopause",
+      "body_temperature"
+    ],
+    "post_diagnostic": [
+      "biopsy",
+      "mastectomy",
+      "mammography"
+    ],
+    "biopsy_only": [
+      "biopsy"
+    ],
+    "age_pair_only": [
+      "age_at_visit",
+      "age_current"
+    ],
+    "missingness_only": [
+      "age_at_visit_missing",
+      "menarche_missing",
+      "menopause_missing",
+      "body_temperature_missing",
+      "biopsy_missing",
+      "mastectomy_missing",
+      "mammography_missing",
+      "age_current_missing"
+    ],
+    "as_published_all_fields": [
+      "age_at_visit",
+      "age_current",
+      "biopsy",
+      "body_temperature",
+      "mammography",
+      "mastectomy",
+      "menarche",
+      "menopause"
+    ],
+    "acquisition_date_only": [
+      "acquisition_days"
+    ]
+  },
+  "pre_diagnostic_fields": [
+    "age_at_visit",
+    "menarche",
+    "menopause",
+    "body_temperature"
+  ],
+  "post_diagnostic_fields": [
+    "biopsy",
+    "mastectomy",
+    "mammography"
+  ],
+  "post_diagnostic_rationale": "biopsy, mastectomy and mammography record what the clinic did because a lesion was suspected or found",
+  "age_pair_rationale": "age_current - age_at_visit is years elapsed since the visit (Pearson 0.990, five distinct values), so the pair encodes the acquisition era, which predicts the label at AUROC 0.981",
+  "lower_bound_note": "their prompts also carry radiotherapy, symptoms, complaints and nipple changes, which this manifest does not hold; the leakage measured here is a lower bound on theirs",
+  "recording_defects_repaired": [
+    "age_at_visit: 1 impossible value(s) [-4] set to missing",
+    "body_temperature: 4 impossible value(s) [0.0] set to missing",
+    "age_current: 1 impossible value(s) [0] set to missing"
+  ],
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "manifest_rows": 236,
+    "manifest_unique_patients": 236,
+    "label_counts": {
+      "0": 140,
+      "1": 96
+    },
+    "splits_path": "results/dmr_patient_splits.csv",
+    "splits_sha256": "c137f5150f2b186a13f3e1f88408ac9dd032597528edb1549b64eb513e1d75c0"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

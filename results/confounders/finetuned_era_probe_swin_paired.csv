@@ -1,0 +1,2 @@
+run,reference,era_auroc,n_patients,delta,delta_lo,delta_hi,bootstrap_p
+experiment_dmr_15_features_swin_finetune,experiment_dmr_15_features_swin_frozen,0.9402173913043479,133,0.0031702898550723946,-0.023399787126897966,0.03076923076923077,0.83

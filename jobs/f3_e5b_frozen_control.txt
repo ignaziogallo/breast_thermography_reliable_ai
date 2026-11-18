@@ -1,0 +1,48 @@
+# E5b -- the control the fine-tuned era probe needs, and a corrected O1 histogram.
+#
+# WHY. The first E5 run returned era AUROC 0.945 [0.903, 0.979] on the fine-tuned ConvNeXt-T
+# representation and 0.940 [0.900, 0.972] on the fine-tuned Swin-T, against the 0.813/0.821
+# of the encoder table. Read naively that says fine-tuning for malignancy makes the
+# acquisition era *more* legible. But the two numbers differ in three ways at once:
+#
+#   representation   frozen ImageNet features  ->  features fine-tuned for diagnosis
+#   estimator        a linear head trained by AdamW  ->  logistic regression
+#   folds            the era decoder's own cohort and folds  ->  the diagnostic arm's folds
+#
+# Only the first is the question. A reviewer will see the other two immediately, and they
+# would be right to: as it stands the comparison is not a comparison. The fix is to run the
+# identical probe on the *frozen* representation of the same encoder, which needs those arms
+# rerun with --save-features. Then --reference makes the difference paired over the same
+# patients and gives it an interval.
+#
+# The frozen arms are cheap: the backbone does not move, so these are far shorter runs than
+# the fine-tuned ones already done.
+#
+# Configurations copied from the config.json of the arms they reproduce
+# (experiment_dmr_02_frontal_static and experiment_dmr_11_encoder_swin_*_probe): frozen
+# backbone, 60-epoch cap with early stopping, batch 16, lr 1e-4, seed 42. As before, output
+# goes to new directories and the submitted runs are not touched; check that predictions
+# reproduce before reading anything else.
+
+python scripts/04_train_single_view.py --data-root data/DMR-IR --manifest results/dmr_view_table_frontal.csv --splits results/dmr_patient_splits.csv --view frontal --encoder convnext_tiny --freeze-backbone --epochs 60 --batch-size 16 --num-workers 4 --save-features --output-dir results/experiment_dmr_15_features_convnext_frozen > logs/f3_e5b_convnext_frozen.log 2>&1
+python scripts/04_train_single_view.py --data-root data/DMR-IR --manifest results/dmr_view_table_frontal.csv --splits results/dmr_patient_splits.csv --view frontal --encoder swin_tiny_patch4_window7_224 --freeze-backbone --epochs 60 --batch-size 16 --num-workers 4 --save-features --output-dir results/experiment_dmr_15_features_swin_frozen > logs/f3_e5b_swin_frozen.log 2>&1
+
+# The probe, once per encoder, each against its own frozen representation. Same probe, same
+# folds, same patients: the only thing that changes is what the encoder was trained to do.
+
+python scripts/40_finetuned_era_probe.py --runs results/experiment_dmr_15_features_convnext_finetune --reference results/experiment_dmr_15_features_convnext_frozen --output results/confounders/finetuned_era_probe_convnext.csv > logs/f3_e5b_probe_convnext.log 2>&1
+python scripts/40_finetuned_era_probe.py --runs results/experiment_dmr_15_features_swin_finetune --reference results/experiment_dmr_15_features_swin_frozen --output results/confounders/finetuned_era_probe_swin.csv > logs/f3_e5b_probe_swin.log 2>&1
+
+# ---------------------------------------------------------------------------------------
+# O1, rerun. The first extraction reported an observed pixel range of 18.70-36.77 degC while
+# the histogram bins were fixed at 25-40, so the coldest end of the background fell outside
+# the bins entirely and `np.histogram` dropped it. The histogram row (0.617) was therefore
+# handicapped against the percentile rows by a choice of range, not by the data. The range is
+# now 18-38 and the fraction of pixels falling inside it is kept as a feature of its own.
+# The other three rows -- background 0.938, global 0.924, ROI 0.806 -- do not depend on
+# HIST_RANGE and will reproduce; that is the check to make when it finishes.
+#
+# Under two minutes: 134 frames, percentile statistics, no GPU.
+
+python scripts/39_signature_source.py --extract --data-root data/DMR-IR > logs/f3_o1_extract2.log 2>&1
+python scripts/39_signature_source.py > logs/f3_o1_probe2.log 2>&1

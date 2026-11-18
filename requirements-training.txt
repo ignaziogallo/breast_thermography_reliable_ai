@@ -1,0 +1,6 @@
+# Re-running the experiments from the datasets. Install on top of requirements.txt.
+# A CUDA GPU is assumed; the runs in jobs/ were executed on a single A100 80GB.
+-r requirements.txt
+torch>=2.1
+torchvision>=0.16
+timm>=0.9

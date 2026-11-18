@@ -1,0 +1,2 @@
+model,accuracy_mean,accuracy_std,balanced_accuracy_mean,balanced_accuracy_std,sensitivity_mean,sensitivity_std,specificity_mean,specificity_std,precision_mean,precision_std,recall_mean,recall_std,f1_mean,f1_std,roc_auc_mean,roc_auc_std,pr_auc_mean,pr_auc_std,brier_score_mean,brier_score_std,ece_mean,ece_std,accuracy_at_selected_threshold_mean,accuracy_at_selected_threshold_std
+swin_tiny_patch4_window7_224_linear_probe,0.5595,0.0188,0.5502,0.0185,0.3053,0.03,0.7951,0.037,0.5821,0.0413,0.3053,0.03,0.3995,0.029,0.5724,0.0076,0.5962,0.0166,0.2455,0.0007,0.0333,0.0089,0.519,0.009

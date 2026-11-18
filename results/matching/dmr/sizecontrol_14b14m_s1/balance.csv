@@ -1,0 +1,5 @@
+cohort,covariate,n_malignant,n_benign,mean_malignant,mean_benign,smd,balanced_at_0.1
+sizecontrol_14b14m_s1,acquisition_days,14,14,2079.785714285714,77.5,2.888571649741417,False
+sizecontrol_14b14m_s1,age_at_visit,14,14,45.214285714285715,55.42857142857143,-0.7074628150240685,False
+sizecontrol_14b14m_s1,menarche,14,14,12.428571428571429,11.285714285714286,0.394426389221848,False
+sizecontrol_14b14m_s1,body_temperature,14,14,35.57142857142857,35.278571428571425,0.3538216555262886,False

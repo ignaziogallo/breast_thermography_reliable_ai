@@ -1,0 +1,34 @@
+{
+  "experiment": "experiment_dmr_05_text_probe",
+  "research_question": "which clause of the DMR-IR prompt carries the metadata-only score",
+  "comparison": "Pinto et al. 2025 Table III: 0.918 accuracy from a linear probe on embeddings of this same text, image-level split, no test set",
+  "protocol_difference": "patient-level 5x5 folds; TF-IDF and classifier fitted inside each fold so the test partition's vocabulary never informs training",
+  "encoder_difference": "TF-IDF bigrams, not a sentence-transformer; the comparison is between clauses, not against their absolute number",
+  "arms": [
+    "all_text",
+    "minus_all_post_diagnostic",
+    "minus_medical_history",
+    "only_medical_history",
+    "pre_diagnostic_clauses"
+  ],
+  "post_diagnostic_clauses": [
+    "breast_findings",
+    "medical_history"
+  ],
+  "age_pair_scope_note": "the prompt carries only age_at_visit, so the age_current pair channel of scripts/25 (AUROC 0.946) is NOT available here and does not explain Table III",
+  "n_patients": 236,
+  "inputs": {
+    "manifest_path": "results/dmr_patient_manifest.csv",
+    "manifest_sha256": "211b25544489c2bf7787a3629acfc5bae172f603c849c4802d2ede4c00f40b94",
+    "manifest_rows": 236,
+    "manifest_unique_patients": 236,
+    "label_counts": {
+      "0": 140,
+      "1": 96
+    },
+    "splits_path": "results/dmr_patient_splits.csv",
+    "splits_sha256": "c137f5150f2b186a13f3e1f88408ac9dd032597528edb1549b64eb513e1d75c0"
+  },
+  "n_bootstrap": 2000,
+  "seed": 42
+}

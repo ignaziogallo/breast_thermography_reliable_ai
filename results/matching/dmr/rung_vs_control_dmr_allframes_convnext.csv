@@ -1,0 +1,4 @@
+dataset,cohort,n_patients,n_scored,n_benign,n_malignant,confounder_auroc,image_auroc,ci_lower,ci_upper,quality_gate_failed,n_size_controls,control_auroc_min,control_auroc_median,control_auroc_max,control_aurocs,all_controls_above_rung_ci
+dmr_allframes_convnext,original,236,236,140,96,0.9813,0.9225,0.883,0.9557,False,0,,,,,False
+dmr_allframes_convnext,overlap,60,60,28,32,0.7199,0.7879,0.6662,0.8983,False,3,0.8069,0.8393,0.8705,0.8069;0.8393;0.8705,False
+dmr_allframes_convnext,propensity_clinical,174,174,87,87,0.9808,0.9161,0.8686,0.9545,False,3,0.9022,0.9203,0.9337,0.9203;0.9337;0.9022,False

@@ -1,0 +1,17 @@
+score,score_column,confounder,caliper,n_pairs,n_positive,n_negative,n_positive_in_pairs,n_negative_in_pairs,c_statistic,ci_lower,ci_upper,exceeds_chance,n_bootstrap_valid
+convnext_tiny_finetune_discriminative_lr,score__convnext_tiny_finetune_discriminative_lr,age,none,2940,35,84,35,84,0.6578231292517007,0.5506377551020408,0.7615646258503401,True,2000
+convnext_tiny_finetune_discriminative_lr,score__convnext_tiny_finetune_discriminative_lr,age,10.0,1127,35,84,35,74,0.5554569653948536,0.4324929861079687,0.6809420844735674,False,2000
+convnext_tiny_finetune_discriminative_lr,score__convnext_tiny_finetune_discriminative_lr,age,5.0,678,35,84,35,68,0.551622418879056,0.4196206892258142,0.6907129733925638,False,2000
+convnext_tiny_finetune_discriminative_lr,score__convnext_tiny_finetune_discriminative_lr,age,2.0,335,35,84,32,63,0.5582089552238806,0.402271774447123,0.7137693077803203,False,2000
+swin_tiny_patch4_window7_224_finetune_discriminative_lr,score__swin_tiny_patch4_window7_224_finetune_discriminative_lr,age,none,2940,35,84,35,84,0.6693877551020408,0.5533928571428572,0.777219387755102,True,2000
+swin_tiny_patch4_window7_224_finetune_discriminative_lr,score__swin_tiny_patch4_window7_224_finetune_discriminative_lr,age,10.0,1127,35,84,35,74,0.5314995563442768,0.39675717051693127,0.6715835956551088,False,2000
+swin_tiny_patch4_window7_224_finetune_discriminative_lr,score__swin_tiny_patch4_window7_224_finetune_discriminative_lr,age,5.0,678,35,84,35,68,0.523598820058997,0.38013439037535424,0.6709362231584842,False,2000
+swin_tiny_patch4_window7_224_finetune_discriminative_lr,score__swin_tiny_patch4_window7_224_finetune_discriminative_lr,age,2.0,335,35,84,32,63,0.5253731343283582,0.36279467539228083,0.6869313541412322,False,2000
+convnext_tiny_linear_probe,score__convnext_tiny_linear_probe,age,none,2940,35,84,35,84,0.5346938775510204,0.4190221088435374,0.6479676870748299,False,2000
+convnext_tiny_linear_probe,score__convnext_tiny_linear_probe,age,10.0,1127,35,84,35,74,0.4968944099378882,0.36919580116291084,0.622991042679,False,2000
+convnext_tiny_linear_probe,score__convnext_tiny_linear_probe,age,5.0,678,35,84,35,68,0.5117994100294986,0.3793404964049234,0.6482788585653697,False,2000
+convnext_tiny_linear_probe,score__convnext_tiny_linear_probe,age,2.0,335,35,84,32,63,0.5402985074626866,0.3927395508670982,0.6881720430107527,False,2000
+confounder_alone_control,score__confounder_alone_control,age,none,2940,35,84,35,84,0.7685374149659864,0.6746556122448979,0.851360544217687,True,2000
+confounder_alone_control,score__confounder_alone_control,age,10.0,1127,35,84,35,74,0.6011535048802129,0.522286617237107,0.6790684492535477,True,2000
+confounder_alone_control,score__confounder_alone_control,age,5.0,678,35,84,35,68,0.5435103244837758,0.460792976420476,0.620280992419782,False,2000
+confounder_alone_control,score__confounder_alone_control,age,2.0,335,35,84,32,63,0.5477611940298508,0.4650642290603078,0.6290040642792928,False,2000
