@@ -7,6 +7,7 @@ title: "Leakage-Free Is Not Confounder-Free: code and aggregate results"
 version: 1.0.0
 date-released: "2026-11-17"
 license: Apache-2.0
+repository-code: "https://github.com/ignaziogallo/breast_thermography_reliable_ai"
 authors:
   - family-names: "Gallo"
     given-names: "Ignazio"

@@ -8,8 +8,9 @@ leakage between partitions; it does not remove a confounder that travels with th
 DMR-IR the acquisition date alone predicts malignancy almost perfectly, the date is legible
 in the pixels, and what an image model appears to know has to be re-read once the date is
 controlled. This repository contains the analysis code, the exact experiment
-configurations, and the patient-level predictions and statistics behind every reported
-number.
+configurations, the initial model weights, and the statistics behind every reported
+number; the patient-level predictions are regenerated from the public datasets
+(Section 1).
 
 **The patient is the experimental unit.** Every view and every frame of a patient stays in
 one partition, and frame predictions are averaged within a patient before any interval is
@@ -25,9 +26,13 @@ identifier, a diagnosis and often a date and an age, so none of them is included
 
 What is included:
 
-* the code, with the exact command lines every experiment was run with;
+* the code, with the exact command lines of the batch runs (`jobs/`);
 * for every run, its configuration, input hashes, metrics, bootstrap intervals and fold
   log, and every aggregate statistic the paper reports (`results/`);
+* the initial weights every training run starts from -- the pretrained encoders with the
+  seeded classifier head -- published as assets of the
+  [`weights-v1` release](https://github.com/ignaziogallo/breast_thermography_reliable_ai/releases/tag/weights-v1)
+  (Section 8);
 * the scripts that rebuild every per-patient file from your own copy of the datasets: the
   manifests and folds on a CPU (Section 5), the predictions on a GPU (Section 8), after
   which the analyses of Section 7 can be recomputed.
@@ -389,8 +394,38 @@ the same thing.
 ## 8. Re-running training
 
 Training needs `pip install -r requirements-training.txt`, a GPU, both datasets prepared as
-in Section 5, and network access the first time (`timm` fetches the ImageNet weights into
-`results/pretrained/`). `mkdir -p logs` first: the job files redirect there.
+in Section 5, and the initial weights below. `mkdir -p logs` first: the job files redirect
+there.
+
+### Initial weights
+
+Every training script starts each fold from a cached state, `results/pretrained/<encoder>.pt`:
+the ImageNet-pretrained encoder from `timm` together with its randomly initialised
+classifier head, cached on first use so that every fold of every run starts from the same
+head. The files the paper's runs started from are published as assets of the
+[`weights-v1` release](https://github.com/ignaziogallo/breast_thermography_reliable_ai/releases/tag/weights-v1),
+with their SHA-256 in `SHA256SUMS`. Download them before training:
+
+```bash
+mkdir -p results/pretrained && cd results/pretrained
+for f in convnext_tiny.pt swin_tiny_patch4_window7_224.pt resnet50.pt SHA256SUMS; do
+  curl -fLO "https://github.com/ignaziogallo/breast_thermography_reliable_ai/releases/download/weights-v1/$f"
+done
+sha256sum -c SHA256SUMS          # macOS: shasum -a 256 -c SHA256SUMS
+cd ../..
+```
+
+or, with the GitHub CLI,
+`gh release download weights-v1 --repo ignaziogallo/breast_thermography_reliable_ai --dir results/pretrained`.
+
+With these files a fresh clone reproduces the stored statistics: the frontal ConvNeXt-T
+frozen probe (`experiment_dmr_11_encoder_convnext_tiny_probe`) returned a pooled AUROC of
+0.8108 against the stored 0.8108, with current library versions. Without them `timm`
+downloads the weights afresh and a new head is drawn; the same run then returned 0.8216 --
+inside the stored interval [0.755, 0.864], but not the same predictions. Frozen probes are
+the most sensitive to this, since the head is the only part they train.
+
+### Command lines
 
 `jobs/*.txt` hold the command lines of the GPU batch runs exactly as they were run, one per
 line, grouped by the GPU they were dispatched to. The four main imaging arms:
@@ -488,7 +523,8 @@ that reason.
   reproduces bit-identically across runs on one machine. Small last-digit differences
   across platforms, BLAS builds or library versions are expected -- the stored statistics
   were produced on Linux -- and the consistency check's tolerance is 5e-4, half a unit in
-  the last decimal the manuscript prints.
+  the last decimal the manuscript prints. The training path reproduces the stored
+  statistics when it starts from the initial weights of Section 8.
 * **Platforms.** Paths in a `config.json` are recorded with forward slashes and text files
   are checked out with LF line endings on every platform, so a run recorded on one system
   can be matched to its inputs on another.
