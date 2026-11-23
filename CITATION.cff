@@ -1,11 +1,9 @@
-# TO COMPLETE AFTER THE ARXIV SUBMISSION: the preprint identifier below ("arXiv:TODO")
-# is the only remaining placeholder. Replace it with the identifier arXiv assigns.
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper it accompanies."
 type: software
 title: "Leakage-Free Is Not Confounder-Free: code and aggregate results"
 version: 1.0.0
-date-released: "2026-11-17"
+date-released: "2026-11-23"
 license: Apache-2.0
 repository-code: "https://github.com/ignaziogallo/breast_thermography_reliable_ai"
 authors:
@@ -45,8 +43,13 @@ preferred-citation:
     - family-names: "Landro"
       given-names: "Nicola"
   year: 2026
+  month: 11
   journal: "arXiv preprint"
+  url: "https://arxiv.org/abs/2611.27585"
   identifiers:
     - type: other
-      value: "arXiv:TODO"
+      value: "arXiv:2611.27585"
       description: "The arXiv preprint"
+    - type: doi
+      value: "10.48550/arXiv.2611.27585"
+      description: "DOI assigned by arXiv"

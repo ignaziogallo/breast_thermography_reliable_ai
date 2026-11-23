@@ -1,7 +1,10 @@
 # Leakage-Free Is Not Confounder-Free
 
+[![arXiv](https://img.shields.io/badge/arXiv-2611.27585-b31b1b.svg)](https://arxiv.org/abs/2611.27585)
+
 Code and stored results for the paper *Leakage-Free Is Not Confounder-Free: What a
-Patient-Level Split Cannot Certify About a Medical Imaging Benchmark*.
+Patient-Level Split Cannot Certify About a Medical Imaging Benchmark*
+([arXiv:2611.27585](https://arxiv.org/abs/2611.27585)).
 
 The study audits two public breast-thermography benchmarks. Splitting by patient removes
 leakage between partitions; it does not remove a confounder that travels with the label. On
@@ -532,7 +535,8 @@ that reason.
 ## 11. Licence
 
 The code is released under the Apache License, Version 2.0 (see `LICENSE`); `CITATION.cff`
-says how to cite it. The two datasets are not part of this repository and keep the terms
+says how to cite it, and the paper is
+[arXiv:2611.27585](https://arxiv.org/abs/2611.27585). The two datasets are not part of this repository and keep the terms
 of their own distributors.
 
 ## 12. Development
